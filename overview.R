@@ -3,7 +3,7 @@
 # Date: December, 2018
 # Task: Overview of the data
 
-########## CONTENTS ###################
+########## CONTENTS #######################################
 
 # 1. Read data
 # 2. N reviews
@@ -16,15 +16,17 @@ library(tidyverse)
 library(lubridate)
 library(zoo)
 
-########## N reviews ###################
+########## 1. Read data ###################################
 
 # 1. Read data
 df <- read_csv("vitaepro_data2.csv")
 
-# 2. N reviews
+########## 2. N reviews ###################################
+
 nrow(df) # 678, excluding reviews from before july 2017
 
-# 3. N reviews by month
+########## 3. N reviews by month ##########################
+
 df %>%
   group_by(month=floor_date(time, "month")) %>%
   summarise(n = n()) %>%
@@ -34,16 +36,17 @@ df %>%
   geom_point(size=2) +
   theme_minimal() +
   labs(y="Antal anmeldelser akk.",x="Måned") +
-  theme(axis.text  = element_text(size = 16),
-        axis.title = element_text(size = 18),
+  theme(axis.text    = element_text(size = 16),
+        axis.title   = element_text(size = 18),
         axis.title.x = element_text(margin = margin(t = 20,b=10)),
         axis.title.y = element_text(margin = margin(r = 20,l=10))) 
 
-# 4. Average rating by month
+########## 4. Average rating by month #####################
+
 df %>%
   group_by(month=floor_date(time, "month")) %>% 
-  summarise(n= n(),
-            m = mean(rating),
+  summarise(n  = n(),
+            m  = mean(rating),
             sd = sd(rating)) %>%
   filter(month >= date("2018-01-01")) %>%
   ggplot(aes(month,m)) +
@@ -54,12 +57,13 @@ df %>%
   ylim(0,6) +
   labs(y="Gennemsnitlig rating",x="Måned") +
   theme_minimal() +
-  theme(axis.text  = element_text(size = 16),
-        axis.title = element_text(size = 18),
+  theme(axis.text    = element_text(size = 16),
+        axis.title   = element_text(size = 18),
         axis.title.x = element_text(margin = margin(t = 20,b=10)),
         axis.title.y = element_text(margin = margin(r = 20,l=10))) 
 
-# 5. Distribution of ratings
+########## 5. Distribution of ratings #####################
+
 df %>% 
   group_by(rating) %>%
   count() %>%
@@ -68,19 +72,20 @@ df %>%
   scale_fill_manual(values = c("#FF3722","#FF8622","#FFCE00","#73CF11","#00B67A"),guide=F) +
   labs(y="Antal",x="Rating") +
   theme_minimal() +
-  theme(axis.text  = element_text(size = 16),
-        axis.title = element_text(size = 18),
+  theme(axis.text    = element_text(size = 16),
+        axis.title   = element_text(size = 18),
         axis.title.x = element_text(margin = margin(t = 20,b=10)),
         axis.title.y = element_text(margin = margin(r = 20,l=10))) 
 
-# 6. Distribution of ratings by quarter
+########## 6. Distribution of ratings by quarter ##########
+
 quarters <- df %>% 
   group_by(quarter = floor_date(time, "quarter")) %>%
   count(rating) %>%
   ungroup() %>%
   complete(quarter, nesting(rating), fill = list(n =0)) %>%
   group_by(quarter) %>%
-  mutate(prop = n / sum(n),
+  mutate(prop  = n / sum(n),
          order = rev(row_number()))
 
 quarters$Kvartal <- (as.yearqtr(quarters$quarter, format = "%Y-%m-%d"))
@@ -91,8 +96,8 @@ quarters %>%
   scale_fill_manual(values = c("#FF3722","#FF8622","#FFCE00","#73CF11","#00B67A"), guide = F) +
   theme_minimal() +
   labs(y="",x="Kvartal") +
-  theme(axis.text  = element_text(size = 16),
-        axis.title = element_text(size = 18),
+  theme(axis.text    = element_text(size = 16),
+        axis.title   = element_text(size = 18),
         axis.title.x = element_text(margin = margin(t = 20,b=10))) 
 
 
