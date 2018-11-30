@@ -3,7 +3,7 @@
 # Date: December, 2018
 # Task: Frequency
 
-########## CONTENTS ###################
+########## CONTENTS #######################################
 
 # 1. Prepare data
 # 2. word frequency
@@ -83,8 +83,6 @@ ggsave("wordFreqTop25.png")
 wordcloud(words = wordFreq$word, freq = wordFreq$n, min.freq = 10, random.order=FALSE, rot.per=0.35, 
           colors=brewer.pal(9,"Blues")[4:9])
 
-ggsave("wordcloud.png")
-
 ########## 4. bigram frequency ############################
 
 df2 <- read_csv("vitaepro_data2.csv") %>%
@@ -134,5 +132,4 @@ ggsave("bigramFreqTop25.png")
 wordcloud(words = bigramFreq$bigram, freq = bigramFreq$n, min.freq = 3, random.order=FALSE, rot.per=0.35, 
           colors=brewer.pal(9,"Blues")[4:9])
 
-ggsave("wordcloud_bigram.png")
 
