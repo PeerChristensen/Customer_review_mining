@@ -25,7 +25,7 @@ df <- read_csv("vitaepro_data2.csv") %>%
   #mutate(id = paste0(id,time)) %>%
   select(-id,-company,-time,-rating, -sentiment) 
 
-my_stopwords <- c("så","vitaepro","pro","vita","danmark","vitae","vitapro", "vita", "kan"
+my_stopwords <- c("så","vitaepro","pro","vita","danmark","vitae","vitapro", "vita", "kan",
                   tm::stopwords("danish"))
 
 wordFreq <- df %>%
@@ -74,12 +74,16 @@ wordFreqTop25 %>%
       panel.grid.major.y = element_blank()) +
   scale_fill_gradient(low=brewer.pal(9,"Blues")[3],high=brewer.pal(9,"Blues")[9])
 
+ggsave("wordFreqTop25.png")
+
 ########## 3. word cloud ##################################
 
 # min = 10 
 
 wordcloud(words = wordFreq$word, freq = wordFreq$n, min.freq = 10, random.order=FALSE, rot.per=0.35, 
           colors=brewer.pal(9,"Blues")[4:9])
+
+ggsave("wordcloud.png")
 
 ########## 4. bigram frequency ############################
 
@@ -121,10 +125,14 @@ bigramFreqTop25 %>%
         panel.grid.major.y = element_blank()) +
   scale_fill_gradient(low=brewer.pal(9,"Blues")[2],high=brewer.pal(9,"Blues")[9])
 
+ggsave("bigramFreqTop25.png")
+
 ########## 5. bigram word cloud ##################################
 
 # min = 10 
 
 wordcloud(words = bigramFreq$bigram, freq = bigramFreq$n, min.freq = 3, random.order=FALSE, rot.per=0.35, 
           colors=brewer.pal(9,"Blues")[4:9])
+
+ggsave("wordcloud_bigram.png")
 

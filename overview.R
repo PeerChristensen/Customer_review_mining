@@ -41,6 +41,8 @@ df %>%
         axis.title.x = element_text(margin = margin(t = 20,b=10)),
         axis.title.y = element_text(margin = margin(r = 20,l=10))) 
 
+ggsave("reviews_by_month_acc.png")
+
 ########## 4. Average rating by month #####################
 
 df %>%
@@ -62,6 +64,8 @@ df %>%
         axis.title.x = element_text(margin = margin(t = 20,b=10)),
         axis.title.y = element_text(margin = margin(r = 20,l=10))) 
 
+ggsave("avg_rating_by_month.png")
+
 ########## 5. Distribution of ratings #####################
 
 df %>% 
@@ -76,6 +80,8 @@ df %>%
         axis.title   = element_text(size = 18),
         axis.title.x = element_text(margin = margin(t = 20,b=10)),
         axis.title.y = element_text(margin = margin(r = 20,l=10))) 
+
+ggsave("rating_distribution.png")
 
 ########## 6. Distribution of ratings by quarter ##########
 
@@ -99,6 +105,8 @@ quarters %>%
   theme(axis.text    = element_text(size = 16),
         axis.title   = element_text(size = 18),
         axis.title.x = element_text(margin = margin(t = 20,b=10))) 
+
+ggsave("ratings_ditribution_kvartal.png")
 
 
 
