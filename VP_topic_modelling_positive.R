@@ -159,6 +159,8 @@ top_terms %>%
         strip.text.x = element_text(size=16)) +
   scale_fill_manual(values=cols)
 
+ggsave("beta_pos_plot.png")
+
 # BETA + GAMMA
 
 top_terms <- td_beta  %>%
@@ -201,3 +203,5 @@ gamma_terms %>%
         axis.title.y = element_text(margin = margin(r = 30,l=10)),
         panel.grid = element_blank()) +
   scale_fill_manual(values=cols)
+
+ggsave("beta_gamma_pos_plot.png")

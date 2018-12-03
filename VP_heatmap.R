@@ -49,12 +49,11 @@ posteriorNeg                       %<>%
 
 posteriorNeg$id <- factor(posteriorNeg$id, levels = unique(df$id))
 
-posteriorNeg %>% ggplot(aes(topic,fct_rev(id))) + 
+posteriorNeg %>% 
+  ggplot(aes(topic,fct_rev(id))) + 
   geom_tile(aes(fill = value), colour = "snow") + 
   #scale_fill_stellenbosch(discrete = F, "wine") +
   scale_fill_gradient(low = "snow", high = "#FF3722",guide=F) +
-  labs(title = "Topics associated with presidents",
-       y     = "presidents") +
   theme_minimal() +
   theme(axis.text.y    = element_text(size = 2),
         axis.title   = element_text(size = 18),
