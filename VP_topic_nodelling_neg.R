@@ -201,3 +201,4 @@ gamma_terms %>%
         axis.title.y = element_text(margin = margin(r = 30,l=10)),
         panel.grid = element_blank()) +
   scale_fill_manual(values=cols)
+
