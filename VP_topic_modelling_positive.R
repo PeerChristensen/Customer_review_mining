@@ -140,7 +140,7 @@ top_terms <- td_beta %>%
 
 top_terms %>%
   ggplot(aes(order, beta,fill = rev(factor(topic)))) +
-  ggtitle("Positive review topics") +
+  #ggtitle("Positive review topics") +
   geom_col(show.legend = FALSE) +
   scale_x_continuous(
     breaks = top_terms$order,

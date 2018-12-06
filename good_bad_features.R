@@ -68,4 +68,4 @@ goodBad %>%
         axis.title.y = element_text(margin = margin(r = 30,l=10)),
         panel.grid = element_blank())
 
-ggsave("good_bad_correlation")  
+ggsave("good_bad_correlation.png")  

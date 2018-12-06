@@ -39,7 +39,7 @@ neg_model <- stm(dfSparseNeg, K = 5, verbose = TRUE)
 
 posteriorNeg <- neg_model$theta  %>% 
   data.frame() %>%
-  mutate(id = unique(df$id))
+  mutate(id = unique(dfNeg$id))
 
 posteriorNeg                       %<>% 
   gather(topic, value, -id)      %>%
@@ -47,7 +47,7 @@ posteriorNeg                       %<>%
          id = factor(id)) %>%
   as_tibble()
 
-posteriorNeg$id <- factor(posteriorNeg$id, levels = unique(df$id))
+posteriorNeg$id <- factor(posteriorNeg$id, levels = unique(dfNeg$id))
 
 posteriorNeg %>% 
   ggplot(aes(topic,fct_rev(id))) + 
