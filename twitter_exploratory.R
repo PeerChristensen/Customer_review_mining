@@ -3,25 +3,6 @@
 # Date: December, 2018
 # Task: Twitter data
 # 
-# https://rtweet.info/
-#   
-#   https://www.earthdatascience.org/courses/earth-analytics/get-data-using-apis/use-twitter-api-r/
-#   
-#   https://cran.r-project.org/web/packages/rtweet/vignettes/intro.html
-# 
-# library(rtweet)
-# 
-# 
-# ## autheticate via web browser
-# token <- create_token(
-#   app = "textR",
-#   consumer_key = "hrztENrNCQ5FpXKK1RdeN8zFf",
-#   consumer_secret = "GE9WUVCt4mDpmT6u2SNif5rxbzG3DPK0gBZpu7tz1TopOlQYnE")
-# 
-# tweets <- search_tweets2(
-#   "Vitaepro", n = 100000, include_rts = FALSE,
-#   retryonratelimit = TRUE
-# )
 
 library(tidyverse)
 library(magrittr)
