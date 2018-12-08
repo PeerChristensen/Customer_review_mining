@@ -33,12 +33,3 @@ d = {'tweet_id': tweet_id, 'date': date, 'text': text}
 df = pd.DataFrame(data=d)
 
 df.to_csv('vitaepro_tweets.csv', encoding='utf-8')
-
-df = zip(tweet_id,date,text)
-
-
-with open('vitaepro_twitter.csv', mode='w') as vitaepro_twitter:
-    twitter_writer = csv.writer(vitaepro_twitter)
-# delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL
-    twitter_writer.writerow(['John Smith', 'Accounting', 'November'])
-    twitter_writer.writerow(['Erica Meyers', 'IT', 'March'])
