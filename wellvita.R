@@ -207,7 +207,7 @@ k_result %>%
 # SELECT MODEL
 
 topic_model_stm <- k_result %>% 
-  filter(K ==6)             %>% 
+  filter(K ==5)             %>% 
   pull(topic_model)         %>% 
   .[[1]]
 
@@ -215,7 +215,7 @@ topic_model_stm
 
 # EXPLORE MODEL
 
-cols = brewer.pal(9, "Greens")[4:9]
+cols = brewer.pal(9, "Blues")[4:9]
 cols = colorRampPalette(cols)(10)
 
 # BETA PLOT
@@ -250,14 +250,14 @@ top_terms %>%
         strip.text.x = element_text(size=16)) +
   scale_fill_manual(values=cols)
 
-ggsave("beta_pos_plot.png")
+ggsave("movizin_beta_pos_plot.png")
 
 # BETA + GAMMA
 
 top_terms <- td_beta  %>%
   arrange(beta)       %>%
   group_by(topic)     %>%
-  top_n(8, beta)      %>%
+  top_n(6, beta)      %>%
   arrange(-beta)      %>%
   select(topic, term) %>%
   summarise(terms = list(term)) %>%
@@ -295,4 +295,4 @@ gamma_terms %>%
         panel.grid = element_blank()) +
   scale_fill_manual(values=cols)
 
-ggsave("beta_gamma_pos_plot.png")
+ggsave("movizin_beta_gamma_pos_plot.png")
