@@ -17,10 +17,10 @@ library(ggrepel)
 
 ########## 1. Prepare data ################################
 
-df <- read_csv("vitaepro_data2.csv") %>%
+df <- read_csv("vitaepro_dataCombined.csv") %>%
   #mutate(id = paste0(id,time)) %>%
   select(-id,-company,-time,rating, -sentiment) %>%
-  mutate(class = ifelse(rating>=4,"good","bad"))
+  mutate(class = ifelse(rating >= 4,"good","bad"))
 
 my_stopwords <- c("så","vitaepro","pro","vita","danmark","vitae","vitapro", "vita", "kan",
                   tm::stopwords("danish"))
@@ -68,4 +68,4 @@ goodBad %>%
         axis.title.y = element_text(margin = margin(r = 30,l=10)),
         panel.grid = element_blank())
 
-ggsave("good_bad_correlation.png")  
+ggsave("good_bad_correlationUpdate.png")  

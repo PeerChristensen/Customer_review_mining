@@ -23,7 +23,7 @@ library(happyorsad)
 #NOTE that Trustpilot have changed their site
 # you now need to set page_lim
 
-#df <- get_reviews("https://dk.trustpilot.com/review/vitaepro.dk", page_lim=35,company = "VitaePro")
+#df <- get_reviews("https://dk.trustpilot.com/review/vitaepro.dk", page_lim=3,company = "VitaePro")
 
 ########## CLEAN DATA #########
 
@@ -40,5 +40,14 @@ df %<>%
 
 ########## WRITE CSV FILE ###############
 
-#write_csv(df, "vitaepro_data2.csv")
+#write_csv(df, "vitaepro_data3.csv")
 
+######### COMBINE DATA SETS #############
+
+df1 <- read_csv( "vitaepro_data2.csv")
+df2 <- read_csv( "vitaepro_data3.csv")
+
+df <- rbind(df1,df2)
+df <- df %>% distinct()
+
+write_csv(df, "vitaepro_dataCombined")

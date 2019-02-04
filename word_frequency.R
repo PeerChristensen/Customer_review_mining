@@ -21,7 +21,7 @@ library(quanteda)
 
 ########## 1. Prepare data ################################
 
-df <- read_csv("vitaepro_data2.csv") %>%
+df <- read_csv("vitaepro_dataCombined.csv") %>%
   #mutate(id = paste0(id,time)) %>%
   select(-id,-company,-time,-rating, -sentiment) 
 
@@ -74,7 +74,7 @@ wordFreqTop25 %>%
       panel.grid.major.y = element_blank()) +
   scale_fill_gradient(low=brewer.pal(9,"Blues")[3],high=brewer.pal(9,"Blues")[9])
 
-ggsave("wordFreqTop25.png")
+ggsave("wordFreqTop25Update.png")
 
 ########## 3. word cloud ##################################
 
@@ -85,7 +85,7 @@ wordcloud(words = wordFreq$word, freq = wordFreq$n, min.freq = 10, random.order=
 
 ########## 4. bigram frequency ############################
 
-df2 <- read_csv("vitaepro_data2.csv") %>%
+df2 <- read_csv("vitaepro_dataCombined.csv") %>%
   mutate(id = paste0(id,time)) %>%
   select(-company,-time,-rating, -sentiment) 
 
@@ -123,7 +123,7 @@ bigramFreqTop25 %>%
         panel.grid.major.y = element_blank()) +
   scale_fill_gradient(low=brewer.pal(9,"Blues")[2],high=brewer.pal(9,"Blues")[9])
 
-ggsave("bigramFreqTop25.png")
+ggsave("bigramFreqTop25Update.png")
 
 ########## 5. bigram word cloud ##################################
 

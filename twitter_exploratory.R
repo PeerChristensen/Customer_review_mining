@@ -20,7 +20,7 @@ df %<>%
 df[grep("Åge | Hareide",df$text),]
 
 reklame <- df %>%
-  filter(grepl("reklame",text)==T) %>% 
+  filter(grepl("Åge",text)==T) %>% 
   mutate(sentiment = map_int(text,happyorsad))
 
 df %>%

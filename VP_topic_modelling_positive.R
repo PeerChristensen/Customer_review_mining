@@ -19,10 +19,11 @@ library(stm)
 library(furrr)
 library(ggrepel)
 library(RColorBrewer)
+library(gganimate)
 
 ########## 1. Prepare data ################################
 
-df <- read_csv("vitaepro_data2.csv")
+df <- read_csv("vitaepro_dataCombined.csv")
 
 my_stopwords <- c("så","vitaepro","pro","vita","1","d","2","3","venlig","danmark","vitae","vitapro", "vita", "kan",
                   tm::stopwords("danish"))
@@ -49,7 +50,7 @@ nTopics <- seq(2,15)
 many_models_stm <- data_frame(K = nTopics) %>%
   mutate(topic_model = future_map(K, ~stm(dfSparse, K = ., verbose = TRUE)))
 
-end_time_stm <- Sys.time() # 6.111052 mins
+end_time_stm <- Sys.time() # 6.25 mins
 
 ########## 2. Evaluate models #############################
 
@@ -159,7 +160,7 @@ top_terms %>%
         strip.text.x = element_text(size=16)) +
   scale_fill_manual(values=cols)
 
-ggsave("beta_pos_plot.png")
+ggsave("beta_pos_plotUpdate.png")
 
 # BETA + GAMMA
 

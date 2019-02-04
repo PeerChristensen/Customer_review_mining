@@ -18,7 +18,7 @@ library(tm)
 
 ########## 1. Prepare data ################################
 
-df <- read_csv("vitaepro_data2.csv")
+df <- read_csv("vitaepro_dataCombined.csv")
 
 my_stopwords <- c("så","vitaepro","pro","vita","1","d","2","3","venlig","danmark","vitae","vitapro", "vita", "kan",
                   tm::stopwords("danish"))

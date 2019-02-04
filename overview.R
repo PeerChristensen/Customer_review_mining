@@ -19,7 +19,7 @@ library(zoo)
 ########## 1. Read data ###################################
 
 # 1. Read data
-df <- read_csv("vitaepro_data2.csv")
+df <- read_csv("vitaepro_dataCombined.csv")
 
 ########## 2. N reviews ###################################
 
@@ -41,7 +41,7 @@ df %>%
         axis.title.x = element_text(margin = margin(t = 20,b=10)),
         axis.title.y = element_text(margin = margin(r = 20,l=10))) 
 
-ggsave("reviews_by_month_acc.png")
+ggsave("reviews_by_month_accUpdate.png")
 
 ########## 4. Average rating by month #####################
 
@@ -64,7 +64,7 @@ df %>%
         axis.title.x = element_text(margin = margin(t = 20,b=10)),
         axis.title.y = element_text(margin = margin(r = 20,l=10))) 
 
-ggsave("avg_rating_by_month.png")
+ggsave("avg_rating_by_monthUpdate.png")
 
 ########## 5. Distribution of ratings #####################
 
@@ -81,7 +81,7 @@ df %>%
         axis.title.x = element_text(margin = margin(t = 20,b=10)),
         axis.title.y = element_text(margin = margin(r = 20,l=10))) 
 
-ggsave("rating_distribution.png")
+ggsave("rating_distributionUpdate.png")
 
 ########## 6. Distribution of ratings by quarter ##########
 
@@ -106,7 +106,7 @@ quarters %>%
         axis.title   = element_text(size = 18),
         axis.title.x = element_text(margin = margin(t = 20,b=10))) 
 
-ggsave("ratings_ditribution_kvartal.png")
+ggsave("ratings_ditribution_kvartalUpdate.png")
 
 
 
